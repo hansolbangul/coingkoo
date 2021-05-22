@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Marketcapitalization = () => {
-    return <div>hello</div>;
+const MarketCapitalization = () => {
+    return <div>market</div>;
 };
 
-export default Marketcapitalization;
+export default MarketCapitalization;
