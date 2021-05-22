@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ImageUrl from './ImageUrl';
 import './CoinSite.css';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 function MarketSite(url) {
     const [site, setSite] = useState(null);
