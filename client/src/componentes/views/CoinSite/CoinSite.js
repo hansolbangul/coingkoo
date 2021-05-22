@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ImageUrl from './ImageUrl';
 import './CoinSite.css';
+import { Link, withRouter } from 'react-router-dom';
 
 function MarketSite(url) {
     const [site, setSite] = useState(null);
@@ -28,8 +29,6 @@ function MarketSite(url) {
 const CoinSite = () => {
     const site = MarketSite('https://api.coingecko.com/api/v3/exchanges?per_page=100');
 
-    // console.log(site);
-
     return (
         <section className="container">
             <div className="marketsites">
@@ -52,4 +51,4 @@ const CoinSite = () => {
     );
 };
 
-export default CoinSite;
+export default withRouter(CoinSite);

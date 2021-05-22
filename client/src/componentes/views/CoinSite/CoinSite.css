@@ -7,7 +7,7 @@
 .marketsites {
     display: grid;
     grid-template-columns: repeat(3, minmax(350px, 2fr));
-    grid-gap: 100px;
+    grid-gap: 80px;
     padding: 50px;
     width: 100%;
     padding-top: 70px;
