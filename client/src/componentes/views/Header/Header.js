@@ -37,10 +37,10 @@ function Header(props) {
                     </Link>
                 </div>
                 <div className="Menu">
-                    <Link to="/Community">커뮤니티</Link>
-                    <Link to="/Coinnews">기사</Link>
-                    <Link to="/Coinsite">코인사이트</Link>
-                    <Link to="/Marketcapitalization">시가총액</Link>
+                    <Link to="/community">커뮤니티</Link>
+                    <Link to="/coinnews">기사</Link>
+                    <Link to="/coinsite">코인사이트</Link>
+                    <Link to="/marketcapitalization">시가총액</Link>
                     <Link to="/info">소개</Link>
                 </div>
                 <div className="Log">
