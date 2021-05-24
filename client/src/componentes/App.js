@@ -5,6 +5,7 @@ import LandingPage from './views/LandingPage/LandingPage';
 import LoginPage from './views/LoginPage/LoginPage';
 import RegisterPage from './views/RegisterPage/RegisterPage';
 import Community from './views/Community/Community';
+import CoinNewsPage from './views/CoinNews/CoinNewsPage';
 import Auth from '../hoc/auth';
 import Header from './views/Header/Header';
 import MarketCapitalization from './views/MarketCapitalization/MarketCapitalization';
@@ -22,6 +23,7 @@ function App() {
                     <Route exact path="/login" component={Auth(LoginPage, false)} />
                     <Route exact path="/register" component={Auth(RegisterPage, false)} />
                     <Route exact path="/community" component={Community} />
+                    <Route exact path="/coinnews" component={CoinNewsPage} />
                     <Route exact path="/coinsite" component={CoinSite} />
                     <Route exact path="/marketcapitalization" component={MarketCapitalization} />
                     {/* <Route exact path="/Community" component={Community} /> */}

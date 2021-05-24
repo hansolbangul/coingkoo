@@ -5,7 +5,12 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { User } = require('./models/User');
 const { auth } = require('./middleware/auth');
+
 const config = require('./config/key');
+
+// 크롤링
+const axios = require("axios");
+const cheerio = require("cheerio");
 
 //application/x-www-form-urlencoded   body에 url담음
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -100,5 +105,40 @@ app.get('/api/users/logout', auth, (req, res) => {
         });
     });
 });
+
+// 크롤링
+// 기사 url에 따라 각각의 태그들 모두 변경해야 함.
+// utf-8이 아닌 인코딩 방식의 경우 디코딩 해주어야 함. ex) euc-kr 등
+
+const getHtml = async () => {
+    try {
+        return await axios.get("https://www.yna.co.kr/economy/finance?site=navi_economy_depth02");
+    } catch (error) {
+        console.error(error);
+    }
+  };
+  
+  app.get('/api/crawling/news', (req, res) => {
+    getHtml()
+    .then(html => {
+        let ulList = [];
+        const $ = cheerio.load(html.data);
+        const $bodyList = $("div.list-type038 ul").children("li");
+  
+        $bodyList.each(function(i, elem) {
+            ulList[i] = {
+                image: $(this).find('figure.img-con a img').attr('src'),
+                title: $(this).find('div.news-con a strong.tit-news').text(),
+                url: $(this).find('div.news-con a').attr('href'),
+                summary: $(this).find('div.news-con p.lead').text().slice(0, 200),
+                date: $(this).find('div.info-box01 span.txt-time').text()
+            };
+        });
+  
+        const data = ulList.filter(n => n.title);
+        return data;
+    })
+    .then(result => res.send(result));
+  })
 
 app.listen(port, () => console.log(`Express app listening on port ${port}!`));
