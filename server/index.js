@@ -162,8 +162,17 @@ app.post('/api/board/update', (req, res) => {
         if (err)
             return res.json({ boardUpdateSuccess: false, err });
 
+        if (!board) {
+            return res.json({
+                boardSelectSuccess: false,
+                message: '수정할 게시글이 없습니다.',
+            });
+        }
+
+
         board.title = req.body.title
         board.content = req.body.content
+
         board.save((err, updateBoard) => {
             if (!updateBoard) {
                 return res.json({
@@ -187,10 +196,11 @@ app.post('/api/board/update', (req, res) => {
 // 게시글 삭제 
 app.post('/api/board/delete', (req, res) => {
 
-    Board.deleteOne({ id: req.body.id }, (err, isNotDeleted) => {
+    Board.deleteOne({ id: req.body.id }, (err, result) => {
+
         if (err)
             return res.json({ boardDeleteSuccess: false, err });
-        if (isNotDeleted)
+        if (result.deletedCount == 0)
             return res.json({
                 boardDeleteSuccess: false,
                 message: "삭제할 게시글이 없습니다."});
