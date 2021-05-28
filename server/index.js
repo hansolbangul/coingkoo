@@ -3,10 +3,18 @@ const app = express();
 const port = 5000;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const { User } = require('./models/User');
-const { auth } = require('./middleware/auth');
 
+// 설정
 const config = require('./config/key');
+
+// mongoose
+const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
+
+// Schema
+const { User } = require('./models/User');
+const { Board } = require('./models/Board');
+const { auth } = require('./middleware/auth');
 
 // 크롤링
 const axios = require("axios");
@@ -19,7 +27,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-const mongoose = require('mongoose');
 mongoose
     .connect(config.mongoURI, {
         useNewUrlParser: true,
@@ -29,6 +36,9 @@ mongoose
     })
     .then(() => console.log('MongoDB Connected...')) //에러 안뜨게 작성, 잘연결됬을때 출력, 에러 출력
     .catch((err) => console.log(err));
+
+// 추후 auto-increment 사용 고민
+// autoIncrement.initialize(mongoose.connection);
 
 app.get('/', (req, res) => res.send('안녕하세요~ 다들 새해복 많이 받으세요!!!'));
 
@@ -105,6 +115,93 @@ app.get('/api/users/logout', auth, (req, res) => {
         });
     });
 });
+
+// 게시글 작성
+app.post('/api/board/write', (req, res) => {
+    // 게시글을 작성할 때 필요한 정보들을 클라이언트에서 가져오면 그것들을 DB에 넣어줌
+    const board = new Board(req.body);
+
+    board.save((err, writeBoard) => {
+        if (err)
+            return res.json({ boardWriteSuccess: false, err });
+        return res.status(200).json({
+            boardWriteSuccess: true,
+            id: writeBoard.id,
+            title: writeBoard.title,
+            content: writeBoard.content,
+            user_email: writeBoard.user_email,
+            user_name: writeBoard.user_name
+        });
+    });
+});
+
+// 게시글 조회
+app.post('/api/board/select', (req, res) => {
+    Board.findOne({ id: req.body.id }, (err, selectBoard) => {
+        if (!selectBoard) {
+            return res.json({
+                boardSelectSuccess: false,
+                message: '조회할 게시글이 없습니다.',
+            });
+        }
+
+        return res.status(200).json({
+            boardSelectSuccess: true,
+            id: selectBoard.id,
+            title: selectBoard.title,
+            content: selectBoard.content,
+            user_email: selectBoard.user_email,
+            user_name: selectBoard.user_name
+        });
+    });
+});
+
+// 게시글 업데이트
+app.post('/api/board/update', (req, res) => {
+    Board.findOne({ id: req.body.id }, (err, board) => {
+        if (err)
+            return res.json({ boardUpdateSuccess: false, err });
+
+        board.title = req.body.title
+        board.content = req.body.content
+        board.save((err, updateBoard) => {
+            if (!updateBoard) {
+                return res.json({
+                    boardSelectSuccess: false,
+                    message: '수정할 게시글이 없습니다.',
+                });
+            }
+
+            return res.status(200).json({
+                boardUpdateSuccess: true,
+                id: updateBoard.id,
+                title: updateBoard.title,
+                content: updateBoard.content,
+                user_email: updateBoard.user_email,
+                user_name: updateBoard.user_name
+            });
+        })
+    })
+});
+
+// 게시글 삭제 
+app.post('/api/board/delete', (req, res) => {
+
+    Board.deleteOne({ id: req.body.id }, (err, isNotDeleted) => {
+        if (err)
+            return res.json({ boardDeleteSuccess: false, err });
+        if (isNotDeleted)
+            return res.json({
+                boardDeleteSuccess: false,
+                message: "삭제할 게시글이 없습니다."});
+        return res.json({
+            boardDeleteSuccess: true,
+            deleteId: req.body.id
+        });
+    })
+});
+
+
 
 // 크롤링
 // 기사 url에 따라 각각의 태그들 모두 변경해야 함.
