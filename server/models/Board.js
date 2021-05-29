@@ -41,7 +41,7 @@ const boardSchema = mongoose.Schema({
 boardSchema.plugin(autoIncrement.plugin, {
     model: 'Board',
     field: 'id',
-    startAt: 10, //시작
+    startAt: 1, //시작
     increment: 1, // 증가
 });
 

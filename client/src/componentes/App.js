@@ -19,7 +19,6 @@ function App() {
         <Router>
             <div>
                 <Header />
-
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/login" component={Auth(LoginPage, false)} />

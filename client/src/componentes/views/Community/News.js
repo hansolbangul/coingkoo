@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { writeBoard } from '../../../_actions/board_action';
+import { Link, withRouter } from 'react-router-dom';
 import { Input, Form, Button } from 'antd';
 import { auth } from '../../../_actions/user_action';
 import { val } from 'cheerio/lib/api/attributes';
@@ -13,24 +14,22 @@ const News = (props) => {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
 
-    const onChange = (e) => {
-        console.log('Change:', e.target.value);
-    };
-
     useEffect(() => {
         dispatch(auth()).then((response) => {
             console.log(response);
-            setName(response.name);
-            setEmail(response.email);
+            if (response.payload.error) {
+                alert('로그인 후 이용해주세요 :D');
+                props.history.push('/community');
+            }
+            setName(response.payload.name);
+            setEmail(response.payload.email);
         });
     }, []);
-    console.log(name);
 
     const onFinish = (values) => {
-        console.log(name);
+        values.user_name = name;
+        values.user_email = email;
         console.log(values);
-        values.name = name;
-        values.email = email;
         dispatch(writeBoard(values)).then((response) => {
             if (response.payload.boardWriteSuccess) {
                 props.history.push('/community');
@@ -54,17 +53,6 @@ const News = (props) => {
                 <input />
             </Form.Item>
             <Form.Item
-                name="id"
-                rules={[
-                    {
-                        required: true,
-                        message: 'please input title',
-                    },
-                ]}
-            >
-                <input />
-            </Form.Item>
-            <Form.Item
                 name="content"
                 rules={[
                     {
@@ -73,7 +61,7 @@ const News = (props) => {
                     },
                 ]}
             >
-                <TextArea showCount maxLength={100} onChange={onChange} />
+                <TextArea showCount maxLength={100} />
             </Form.Item>
             <Form.Item>
                 <Button type="primary" htmlType="submit">
@@ -84,4 +72,4 @@ const News = (props) => {
     );
 };
 
-export default News;
+export default withRouter(News);

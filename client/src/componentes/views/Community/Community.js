@@ -11,27 +11,15 @@ function Community(props) {
         setTemp(data);
     };
 
+    const onChange = (e) => {
+        console.log('Change:', e.target.value);
+    };
+
     useEffect(() => {
         Api();
     }, []);
 
-    console.log(temp);
-
-    //     const name = CoinName('https://api.upbit.com/v1/market/all');
-
-    //     const status = CoinStatus(name);
-    //     const price = CoinPrice(status, name);
-    //     const tableSetting = TableSetting(price);
-    //     console.log(tableSetting);
-
     const columns = [
-        {
-            title: 'id',
-            dataIndex: 'id',
-            key: 'id',
-            ellipsis: true,
-            width: '130px',
-        },
         {
             title: '제목',
             dataIndex: 'title',
@@ -73,9 +61,17 @@ function Community(props) {
         <div>
             {temp && (
                 <div>
-                    <div style={{ display: 'flex' }}>
-                        <h3>커뮤니티</h3>
-                        <button url="/clclcl">글쓰기</button>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <h1 style={{ marginLeft: '10px' }}>커뮤니티</h1>
+                        <div style={{ margin: '10px' }}>
+                            <input onChange={onChange} />
+                            <Link
+                                to="/community/news"
+                                style={{ color: 'black', marginLeft: '10px' }}
+                            >
+                                <button>글쓰기</button>
+                            </Link>
+                        </div>
                     </div>
                     <Table
                         style={{ width: '100%', margin: 'auto' }}
