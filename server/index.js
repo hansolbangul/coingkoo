@@ -17,8 +17,8 @@ const { Board } = require('./models/Board');
 const { auth } = require('./middleware/auth');
 
 // 크롤링
-const axios = require("axios");
-const cheerio = require("cheerio");
+const axios = require('axios');
+const cheerio = require('cheerio');
 
 //application/x-www-form-urlencoded   body에 url담음
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -122,15 +122,14 @@ app.post('/api/board/write', (req, res) => {
     const board = new Board(req.body);
 
     board.save((err, writeBoard) => {
-        if (err)
-            return res.json({ boardWriteSuccess: false, err });
+        if (err) return res.json({ boardWriteSuccess: false, err });
         return res.status(200).json({
             boardWriteSuccess: true,
             id: writeBoard.id,
             title: writeBoard.title,
             content: writeBoard.content,
             user_email: writeBoard.user_email,
-            user_name: writeBoard.user_name
+            user_name: writeBoard.user_name,
         });
     });
 });
@@ -145,9 +144,9 @@ app.post('/api/board/selectlist', (req, res) => {
             });
         }
 
-        return res.json(selectBoardList)
-    })
-})
+        return res.json(selectBoardList);
+    });
+});
 
 // 게시글 한 개 조회
 app.post('/api/board/select', (req, res) => {
@@ -166,7 +165,7 @@ app.post('/api/board/select', (req, res) => {
             content: selectBoard.content,
             user_email: selectBoard.user_email,
             user_name: selectBoard.user_name,
-            write_date: selectBoard.write_date
+            write_date: selectBoard.write_date,
         });
     });
 });
@@ -174,8 +173,7 @@ app.post('/api/board/select', (req, res) => {
 // 게시글 업데이트
 app.post('/api/board/update', (req, res) => {
     Board.findOne({ id: req.body.id }, (err, board) => {
-        if (err)
-            return res.json({ boardUpdateSuccess: false, err });
+        if (err) return res.json({ boardUpdateSuccess: false, err });
 
         if (!board) {
             return res.json({
@@ -184,9 +182,8 @@ app.post('/api/board/update', (req, res) => {
             });
         }
 
-
-        board.title = req.body.title
-        board.content = req.body.content
+        board.title = req.body.title;
+        board.content = req.body.content;
 
         board.save((err, updateBoard) => {
             if (!updateBoard) {
@@ -202,31 +199,27 @@ app.post('/api/board/update', (req, res) => {
                 title: updateBoard.title,
                 content: updateBoard.content,
                 user_email: updateBoard.user_email,
-                user_name: updateBoard.user_name
+                user_name: updateBoard.user_name,
             });
-        })
-    })
+        });
+    });
 });
 
-// 게시글 삭제 
+// 게시글 삭제
 app.post('/api/board/delete', (req, res) => {
-
     Board.deleteOne({ id: req.body.id }, (err, result) => {
-
-        if (err)
-            return res.json({ boardDeleteSuccess: false, err });
+        if (err) return res.json({ boardDeleteSuccess: false, err });
         if (result.deletedCount == 0)
             return res.json({
                 boardDeleteSuccess: false,
-                message: "삭제할 게시글이 없습니다."});
+                message: '삭제할 게시글이 없습니다.',
+            });
         return res.json({
             boardDeleteSuccess: true,
-            deleteId: req.body.id
+            deleteId: req.body.id,
         });
-    })
+    });
 });
-
-
 
 // 크롤링
 // 기사 url에 따라 각각의 태그들 모두 변경해야 함.
@@ -234,33 +227,33 @@ app.post('/api/board/delete', (req, res) => {
 
 const getHtml = async () => {
     try {
-        return await axios.get("https://www.yna.co.kr/economy/finance?site=navi_economy_depth02");
+        return await axios.get('https://www.yna.co.kr/economy/finance?site=navi_economy_depth02');
     } catch (error) {
         console.error(error);
     }
-  };
-  
-  app.get('/api/crawling/news', (req, res) => {
+};
+
+app.get('/api/crawling/news', (req, res) => {
     getHtml()
-    .then(html => {
-        let ulList = [];
-        const $ = cheerio.load(html.data);
-        const $bodyList = $("div.list-type038 ul").children("li");
-  
-        $bodyList.each(function(i, elem) {
-            ulList[i] = {
-                image: $(this).find('figure.img-con a img').attr('src'),
-                title: $(this).find('div.news-con a strong.tit-news').text(),
-                url: $(this).find('div.news-con a').attr('href'),
-                summary: $(this).find('div.news-con p.lead').text().slice(0, 200),
-                date: $(this).find('div.info-box01 span.txt-time').text()
-            };
-        });
-  
-        const data = ulList.filter(n => n.title);
-        return data;
-    })
-    .then(result => res.send(result));
-  })
+        .then((html) => {
+            let ulList = [];
+            const $ = cheerio.load(html.data);
+            const $bodyList = $('div.list-type038 ul').children('li');
+
+            $bodyList.each(function (i, elem) {
+                ulList[i] = {
+                    image: $(this).find('figure.img-con a img').attr('src'),
+                    title: $(this).find('div.news-con a strong.tit-news').text(),
+                    url: $(this).find('div.news-con a').attr('href'),
+                    summary: $(this).find('div.news-con p.lead').text().slice(0, 200),
+                    date: $(this).find('div.info-box01 span.txt-time').text(),
+                };
+            });
+
+            const data = ulList.filter((n) => n.title);
+            return data;
+        })
+        .then((result) => res.send(result));
+});
 
 app.listen(port, () => console.log(`Express app listening on port ${port}!`));

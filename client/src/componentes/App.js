@@ -11,6 +11,8 @@ import Header from './views/Header/Header';
 import MarketCapitalization from './views/MarketCapitalization/MarketCapitalization';
 import Info from './views/Info/Info.js';
 import CoinSite from './views/CoinSite/CoinSite';
+// import News from './views/CoinNews/CoinNews';
+import News from './views/Community/News';
 
 function App() {
     return (
@@ -26,6 +28,7 @@ function App() {
                     <Route exact path="/coinnews" component={CoinNewsPage} />
                     <Route exact path="/coinsite" component={CoinSite} />
                     <Route exact path="/marketcapitalization" component={MarketCapitalization} />
+                    <Route exact path="/community/news" component={News} />
                     {/* <Route exact path="/Community" component={Community} /> */}
                 </Switch>
             </div>

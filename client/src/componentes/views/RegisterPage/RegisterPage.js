@@ -5,6 +5,7 @@ import { registerUser } from '../../../_actions/user_action';
 import { withRouter } from 'react-router-dom';
 
 import { Form, Input, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
+import { val } from 'cheerio/lib/api/attributes';
 const { Option } = Select;
 
 const formItemLayout = {
@@ -43,6 +44,7 @@ const RegisterPage = (props) => {
     const [form] = Form.useForm();
 
     const onFinish = (values) => {
+        console.log(values);
         if (values.password !== values.ConfirmPassword) {
             return alert('비밀번호와 비밀번호 확인은 같아야 합니다.');
         }

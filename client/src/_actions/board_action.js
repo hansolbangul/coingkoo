@@ -1,10 +1,8 @@
 import axios from 'axios';
-import { WRITE_BOARD, SELECT_BOARD, UPDATE_BOARD, DELETE_BOARD } from './types';
+import { WRITE_BOARD, SELECT_BOARD, SELECT_BOARD_LIST, UPDATE_BOARD, DELETE_BOARD } from './types';
 
 export function writeBoard(dataTosubmit) {
-    const request = axios
-        .post('/api/board/write', dataTosubmit)
-        .then((response) => response.data);
+    const request = axios.post('/api/board/write', dataTosubmit).then((response) => response.data);
 
     return {
         type: WRITE_BOARD,
@@ -24,9 +22,7 @@ export function selectBoardList(dataTosubmit) {
 }
 
 export function selectBoard(dataTosubmit) {
-    const request = axios
-        .post('/api/board/select', dataTosubmit)
-        .then((response) => response.data);
+    const request = axios.post('/api/board/select', dataTosubmit).then((response) => response.data);
 
     return {
         type: SELECT_BOARD,
@@ -35,9 +31,7 @@ export function selectBoard(dataTosubmit) {
 }
 
 export function updateBoard(dataTosubmit) {
-    const request = axios
-        .post('/api/board/update', dataTosubmit)
-        .then((response) => response.data);
+    const request = axios.post('/api/board/update', dataTosubmit).then((response) => response.data);
 
     return {
         type: UPDATE_BOARD,
@@ -46,9 +40,7 @@ export function updateBoard(dataTosubmit) {
 }
 
 export function deleteBoard(dataTosubmit) {
-    const request = axios
-        .post('/api/board/delete', dataTosubmit)
-        .then((response) => response.data);
+    const request = axios.post('/api/board/delete', dataTosubmit).then((response) => response.data);
 
     return {
         type: DELETE_BOARD,
