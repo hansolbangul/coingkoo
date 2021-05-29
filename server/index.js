@@ -135,7 +135,21 @@ app.post('/api/board/write', (req, res) => {
     });
 });
 
-// 게시글 조회
+// 게시글 리스트 조회
+app.post('/api/board/selectlist', (req, res) => {
+    Board.find((err, selectBoardList) => {
+        if (!selectBoardList) {
+            return res.json({
+                boardSelectSuccess: false,
+                message: '조회할 게시글이 없습니다.',
+            });
+        }
+
+        return res.json(selectBoardList)
+    })
+})
+
+// 게시글 한 개 조회
 app.post('/api/board/select', (req, res) => {
     Board.findOne({ id: req.body.id }, (err, selectBoard) => {
         if (!selectBoard) {
