@@ -9,7 +9,6 @@ const config = require('./config/key');
 
 // mongoose
 const mongoose = require('mongoose');
-// const autoIncrement = require('mongoose-auto-increment');
 
 // Schema
 const { User } = require('./models/User');
@@ -35,7 +34,7 @@ mongoose
         useFindAndModify: false,
     })
     .then(() => console.log('MongoDB Connected...')) //에러 안뜨게 작성, 잘연결됬을때 출력, 에러 출력
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
 
 // 추후 auto-increment 사용 고민
 // autoIncrement.initialize(mongoose.connection);
@@ -235,7 +234,7 @@ const getHtml = async () => {
 
 app.get('/api/crawling/news', (req, res) => {
     getHtml()
-        .then((html) => {
+        .then(html => {
             let ulList = [];
             const $ = cheerio.load(html.data);
             const $bodyList = $('div.list-type038 ul').children('li');
@@ -250,10 +249,10 @@ app.get('/api/crawling/news', (req, res) => {
                 };
             });
 
-            const data = ulList.filter((n) => n.title);
+            const data = ulList.filter(n => n.title);
             return data;
         })
-        .then((result) => res.send(result));
+        .then(result => res.send(result));
 });
 
 app.listen(port, () => console.log(`Express app listening on port ${port}!`));
