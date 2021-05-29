@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+var moment = require('moment');
+require('moment-timezone');
+moment.tz.setDefault("Asia/Seoul");
 
 const boardSchema = mongoose.Schema({
     id: { // 게시글 ID (게시글 구분)
@@ -22,6 +23,10 @@ const boardSchema = mongoose.Schema({
     user_name: { // 게시글 작성자
         type: String,
         maxlength: 50
+    },
+    write_date: { // 작성일
+        type: String,
+        default: moment().format('YYYY-MM-DD HH:mm:ss')
     }
 });
 

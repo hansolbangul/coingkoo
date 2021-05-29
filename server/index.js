@@ -9,7 +9,7 @@ const config = require('./config/key');
 
 // mongoose
 const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
+// const autoIncrement = require('mongoose-auto-increment');
 
 // Schema
 const { User } = require('./models/User');
@@ -151,7 +151,8 @@ app.post('/api/board/select', (req, res) => {
             title: selectBoard.title,
             content: selectBoard.content,
             user_email: selectBoard.user_email,
-            user_name: selectBoard.user_name
+            user_name: selectBoard.user_name,
+            write_date: selectBoard.write_date
         });
     });
 });
