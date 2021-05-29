@@ -1,4 +1,4 @@
-import { WRITE_BOARD, SELECT_BOARD, UPDATE_BOARD, DELETE_BOARD } from '../_actions/types';
+import { WRITE_BOARD, SELECT_BOARD, UPDATE_BOARD, DELETE_BOARD, SELECT_BOARD_LIST } from '../_actions/types';
 
 export default function (state = {}, action) {
     switch (action.type) {
@@ -9,6 +9,10 @@ export default function (state = {}, action) {
         case SELECT_BOARD:
             return { ...state, boardData: action.payload };
             break;
+
+        case SELECT_BOARD_LIST:
+                return { ...state, boardData: action.payload };
+                break;
 
         case UPDATE_BOARD:
             return { ...state, boardData: action.payload };

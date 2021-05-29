@@ -12,6 +12,17 @@ export function writeBoard(dataTosubmit) {
     };
 }
 
+export function selectBoardList(dataTosubmit) {
+    const request = axios
+        .post('/api/board/selectlist', dataTosubmit)
+        .then((response) => response.data);
+
+    return {
+        type: SELECT_BOARD_LIST,
+        payload: request,
+    };
+}
+
 export function selectBoard(dataTosubmit) {
     const request = axios
         .post('/api/board/select', dataTosubmit)
