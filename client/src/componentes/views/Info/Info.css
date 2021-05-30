@@ -1,0 +1,16 @@
+.main_text {
+    margin-top: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.title {
+    margin-top: 3%;
+    border: 0 solid rgb(168, 163, 163);
+    border-bottom-width: 1px;
+}
+
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
