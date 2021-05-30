@@ -1,18 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Table, Button, Space } from 'antd';
+import { Table, Button, Space, Input } from 'antd';
 import axios from 'axios';
+import { map, get } from 'lodash';
+const Search = Input.Search;
 
 function Community(props) {
     const [temp, setTemp] = useState([]);
+    const [searchText, setSearchText] = useState('');
+    const [clone, setClone] = useState();
 
     const Api = async () => {
         const { data } = await axios.post('/api/board/selectlist');
         setTemp(data);
+        setClone(data);
     };
+    // console.log(clone);
 
     const onChange = (e) => {
         console.log('Change:', e.target.value);
+    };
+
+    const onSearch = (e) => {
+        const reg = new RegExp(e.target.value, 'gi');
+        const filteredData = map(clone, (record) => {
+            const username = get(record, 'user_name').match(reg);
+            const usertitle = String(get(record, 'title')).match(reg);
+            if (!username && !usertitle) {
+                return null;
+            }
+            return record;
+        }).filter((record) => !!record);
+
+        setSearchText(e.target.value);
+        // setFiltered(!!e.target.value);
+        setTemp(e.target.value ? filteredData : clone);
     };
 
     useEffect(() => {
@@ -73,6 +95,13 @@ function Community(props) {
                             </Link>
                         </div>
                     </div>
+                    <Search
+                        size="large"
+                        onChange={onSearch}
+                        placeholder="Search Records"
+                        value={searchText}
+                        onPressEnter={onSearch}
+                    />
                     <Table
                         style={{ width: '100%', margin: 'auto' }}
                         pagination={false}

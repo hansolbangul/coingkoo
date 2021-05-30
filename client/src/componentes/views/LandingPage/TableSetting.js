@@ -92,6 +92,7 @@ const TableSetting = (price) => {
     }, [price]);
 
     // console.log('TableSetting');
+    // console.log(tableCoin);
 
     return tableCoin;
 };

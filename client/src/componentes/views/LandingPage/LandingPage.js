@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import CoinName from './CoinName';
 import CoinStatus from './CoinStatus';
-import { Table, Button, Space } from 'antd';
+import { Table, Button, Space, Input } from 'antd';
 import CoinPrice from './CoinPrice';
 import TableSetting from './TableSetting';
+import { map, get } from 'lodash';
+const Search = Input.Search;
 
 // const RenderName = () => {
 //     const name = CoinName('https://api.upbit.com/v1/market/all');
@@ -24,6 +26,9 @@ import TableSetting from './TableSetting';
 // }
 
 function LandingPage(props) {
+    const [searchText, setSearchText] = useState('');
+    const [tableSetting, setTableSetting] = useState();
+    const [filtered, setFiltered] = useState(false);
     const name = CoinName('https://api.upbit.com/v1/market/all');
     // const [status, setPrice] = useState()
     // const [price, setPrice] = useState()
@@ -32,8 +37,28 @@ function LandingPage(props) {
     // console.log(name);
     const status = CoinStatus(name);
     const price = CoinPrice(status, name);
-    const tableSetting = TableSetting(price);
-    console.log(tableSetting);
+    const temp = TableSetting(price);
+
+    useEffect(() => {
+        setTableSetting(temp);
+    }, [temp]);
+    // if (tableSetting) setTemp(tableSetting);
+
+    const onSearch = (e) => {
+        const reg = new RegExp(e.target.value, 'gi');
+        const filteredData = map(temp, (record) => {
+            const nameMatch = get(record, 'krw_name').match(reg);
+            const priceMatch = String(get(record, 'price_sort')).match(reg);
+            if (!nameMatch && !priceMatch) {
+                return null;
+            }
+            return record;
+        }).filter((record) => !!record);
+
+        setSearchText(e.target.value);
+        // setFiltered(!!e.target.value);
+        setTableSetting(e.target.value ? filteredData : temp);
+    };
     // const [price] = useState(() => {
     //     return CoinStatus(name);
     // });
@@ -42,7 +67,7 @@ function LandingPage(props) {
     // }, []);
     // const price = CoinStatus(name);
 
-    // console.log(1);
+    console.log(tableSetting);
 
     const columns = [
         {
@@ -97,11 +122,20 @@ function LandingPage(props) {
     return (
         // <div>hello</div>
         <div style={{ alignItems: 'center', textAlign: 'center' }}>
-            {price && (
-                <div>
+            {tableSetting && (
+                <div style={{ width: '60%', margin: 'auto' }}>
                     <h2>coin</h2>
+                    <Search
+                        size="large"
+                        // ref={(ele) => setSearchText(ele)}
+                        // suffix={suffix}
+                        onChange={onSearch}
+                        placeholder="Search Records"
+                        value={searchText}
+                        onPressEnter={onSearch}
+                    />
                     <Table
-                        style={{ width: '60%', margin: 'auto' }}
+                        // rowKey={(record) => record.price_sort}
                         pagination={false}
                         columns={columns}
                         dataSource={tableSetting}
