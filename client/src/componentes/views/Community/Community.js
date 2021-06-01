@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Table, Button, Space, Input } from 'antd';
 import axios from 'axios';
 import { map, get } from 'lodash';
+import './Community.css';
 const Search = Input.Search;
 
 function Community(props) {
@@ -47,67 +48,58 @@ function Community(props) {
             dataIndex: 'title',
             key: 'title',
             ellipsis: true,
-            width: '130px',
-        },
-        {
-            title: 'email',
-            dataIndex: 'user_email',
-            key: 'user_email',
-            ellipsis: true,
-            width: '130px',
         },
         {
             title: '작성자',
             dataIndex: 'user_name',
             key: 'user_name',
             ellipsis: true,
-            width: '130px',
         },
         {
             title: '내용',
             dataIndex: 'content',
             key: 'content',
             ellipsis: true,
-            width: '130px',
         },
         {
             title: 'date',
             dataIndex: 'write_date',
             key: 'write_date',
             ellipsis: true,
-            width: '130px',
         },
     ];
     return (
         // <div>hello</div>
         <div>
             {temp && (
-                <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <h1 style={{ marginLeft: '10px' }}>커뮤니티</h1>
-                        <div style={{ margin: '10px' }}>
-                            <input onChange={onChange} />
-                            <Link
-                                to="/community/news"
-                                style={{ color: 'black', marginLeft: '10px' }}
-                            >
-                                <button>글쓰기</button>
-                            </Link>
+                <div className="form">
+                    <div className="sub">
+                        <br />
+                        <div className="subject">
+                            <h1 style={{ marginLeft: '10px' }}>커뮤니티</h1>
+                            <div style={{ margin: '10px' }}>
+                                <Link
+                                    to="/community/news"
+                                    style={{ color: 'black', marginLeft: '10px' }}
+                                >
+                                    <button>글쓰기</button>
+                                </Link>
+                            </div>
                         </div>
+                        <Search
+                            size="large"
+                            onChange={onSearch}
+                            placeholder="Search Records"
+                            value={searchText}
+                            onPressEnter={onSearch}
+                        />
+                        <Table
+                            style={{ width: '100%', margin: 'auto' }}
+                            pagination={false}
+                            columns={columns}
+                            dataSource={temp}
+                        />
                     </div>
-                    <Search
-                        size="large"
-                        onChange={onSearch}
-                        placeholder="Search Records"
-                        value={searchText}
-                        onPressEnter={onSearch}
-                    />
-                    <Table
-                        style={{ width: '100%', margin: 'auto' }}
-                        pagination={false}
-                        columns={columns}
-                        dataSource={temp}
-                    />
                 </div>
             )}
         </div>

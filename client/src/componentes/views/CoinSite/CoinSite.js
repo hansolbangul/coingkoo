@@ -32,7 +32,7 @@ const CoinSite = () => {
     return (
         <section className="container">
             <div className="marketsites">
-                {site !== null ? (
+                {site &&
                     site.map((e) => (
                         <ImageUrl
                             name={e.name}
@@ -42,10 +42,7 @@ const CoinSite = () => {
                             trustScore={e.trust_score}
                             trustScoreRank={e.trust_score_rank}
                         />
-                    ))
-                ) : (
-                    <div>Loding</div>
-                )}
+                    ))}
             </div>
         </section>
     );

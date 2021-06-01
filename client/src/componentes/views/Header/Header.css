@@ -2,24 +2,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    height: 70px;
+    height: auto;
+    padding: 8px 12px;
     border-bottom: 1px solid rgb(70, 70, 70);
 }
-/* 
-.Link .Home a {
-    color: black;
-} */
-/* 
-.Link .Home .IconInfo {
-    margin-left: 8px;
-    height: 20px;
-    width: 20px;
-} */
 
-/* .Link .Menu {
-
-} */
 .Link .Home a {
     display: flex;
 }
@@ -32,12 +19,19 @@
 
 .Link .Menu a {
     color: rgb(70, 70, 70);
-    margin-left: 12px;
+    /* margin-left: 20px; */
     font-size: 18px;
 }
 
 .Link .Menu {
-    margin-right: 50px;
+    /* margin-right: 50px; */
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.Link .Menu li {
+    padding: 8px 12px;
 }
 
 .Link .Log a {
@@ -52,4 +46,32 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+}
+
+@media screen and (max-width: 375px) {
+    .Link {
+        flex-direction: column;
+        align-items: center;
+        /* border-bottom: 1px solid rgb(70, 70, 70); */
+    }
+    .Link .Menu {
+        flex-direction: column;
+        align-items: center;
+        width: 100px;
+    }
+    .Link .Menu a {
+        color: rgb(70, 70, 70);
+        /* margin-left: 20px; */
+        font-size: 14px;
+    }
+    .Link .Log a {
+        color: rgb(70, 70, 70);
+        font-size: 80%;
+        margin-right: 0;
+        margin: 0px 4px;
+    }
+    .Link .Home a {
+        margin-right: 20px;
+    }
 }

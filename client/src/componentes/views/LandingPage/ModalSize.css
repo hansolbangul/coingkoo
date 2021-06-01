@@ -1,0 +1,24 @@
+/* .ant-modal-content {
+    width: 550px;
+} */
+
+.ant-table-wrapper {
+    max-width: 80%;
+}
+
+@media screen and (max-width: 375px) {
+    .ant-table-thead {
+        width: 60px;
+        font-size: 1px;
+    }
+    .ant-table-tbody {
+        font-size: 1px;
+    }
+    .ant-table-cell {
+        font-size: 1px;
+        padding: 10px 10px;
+    }
+    .ant-btn.ant-btn-primary {
+        font-size: 1px;
+    }
+}

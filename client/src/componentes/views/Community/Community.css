@@ -1,0 +1,29 @@
+.form {
+    align-items: center;
+    text-align: center;
+}
+
+.sub {
+    width: 80%;
+    margin: auto;
+}
+
+.subject {
+    display: flex;
+    justify-content: space-between;
+}
+
+.newstitle {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 375px) {
+    .ant-table-thead {
+        font-size: 1px;
+    }
+    .ant-table-tbody {
+        font-size: 1px;
+    }
+}

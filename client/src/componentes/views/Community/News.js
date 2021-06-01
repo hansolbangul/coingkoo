@@ -5,6 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Input, Form, Button } from 'antd';
 import { auth } from '../../../_actions/user_action';
 import { val } from 'cheerio/lib/api/attributes';
+import './Community.css';
 
 const News = (props) => {
     const dispatch = useDispatch();
@@ -40,18 +41,44 @@ const News = (props) => {
     };
 
     return (
-        <Form onFinish={onFinish}>
-            <Form.Item
-                name="title"
-                rules={[
-                    {
-                        required: true,
-                        message: 'please input title',
-                    },
-                ]}
+        <Form
+            onFinish={onFinish}
+            style={{
+                width: '80%',
+                textAlign: 'center',
+                alignItems: 'center',
+                margin: 'auto',
+                marginTop: '10px',
+            }}
+        >
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    justifyContent: 'space-between',
+                }}
             >
-                <input />
-            </Form.Item>
+                <p style={{ marginRight: '5px' }}>제목: </p>
+                <Form.Item
+                    name="title"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'please input title',
+                        },
+                    ]}
+                >
+                    <input />
+                </Form.Item>
+                <Form.Item>
+                    <Button type="primary" htmlType="submit">
+                        게시
+                    </Button>
+                </Form.Item>
+            </div>
+
             <Form.Item
                 name="content"
                 rules={[
@@ -62,11 +89,6 @@ const News = (props) => {
                 ]}
             >
                 <TextArea showCount maxLength={100} />
-            </Form.Item>
-            <Form.Item>
-                <Button type="primary" htmlType="submit">
-                    게시
-                </Button>
             </Form.Item>
         </Form>
     );

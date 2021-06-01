@@ -58,3 +58,25 @@
     margin-right: 10px;
     font-size: 15px;
 }
+
+@media screen and (max-width: 375px) {
+    .marketsite .marketsite__title {
+        color: black;
+        size: 300px;
+        font-size: 20px;
+        font-weight: 450;
+        margin-bottom: -1px;
+    }
+    .marketsite__trustscore,
+    .marketsite .marketsite__year {
+        margin-right: 10px;
+        font-size: 12px;
+    }
+    .marketsite h2 {
+        position: relative;
+        top: -30px;
+        left: -20px;
+        font-size: 28px;
+        max-width: 150px;
+    }
+}

@@ -8,7 +8,7 @@ import TableSetting from './TableSetting';
 import { map, get } from 'lodash';
 import axios from 'axios';
 import Chart from './Chart';
-import './modal.css';
+import './ModalSize.css';
 
 const Search = Input.Search;
 
@@ -92,7 +92,6 @@ function LandingPage(props) {
             key: 'krw_name',
             sorter: (a, b) => a.krw_name_sort.localeCompare(b.krw_name_sort),
             ellipsis: true,
-            width: '200px',
         },
         {
             title: '현재가',
@@ -100,7 +99,6 @@ function LandingPage(props) {
             key: 'price',
             sorter: (a, b) => a.price_sort - b.price_sort, // 맞는 식
             ellipsis: true,
-            width: '130px',
         },
         {
             title: '전일대비',
@@ -108,7 +106,6 @@ function LandingPage(props) {
             key: 'chage_price',
             sorter: (a, b) => a.chage_price_sort - b.chage_price_sort,
             ellipsis: true,
-            width: '200px',
         },
         {
             title: '고가대비',
@@ -116,7 +113,6 @@ function LandingPage(props) {
             key: 'highest_52_week_price',
             sorter: (a, b) => a.highest_52_week_price_sort - b.highest_52_week_price_sort,
             ellipsis: true,
-            width: '110px',
         },
         {
             title: '저가대비',
@@ -124,7 +120,6 @@ function LandingPage(props) {
             key: 'lowest_52_week_price',
             sorter: (a, b) => a.lowest_52_week_price_sort - b.lowest_52_week_price_sort,
             ellipsis: true,
-            width: '110px',
         },
         {
             title: '거래대금',
@@ -132,11 +127,9 @@ function LandingPage(props) {
             key: 'acc_trade_price_24h',
             sorter: (a, b) => a.acc_trade_price_24h_sort - b.acc_trade_price_24h_sort,
             ellipsis: true,
-            width: '200px',
         },
         {
             title: '정보',
-            width: '200px',
             dataIndex: 'info_name',
             render: (text, record, index) => {
                 return (
@@ -165,12 +158,7 @@ function LandingPage(props) {
                         value={searchText}
                         onPressEnter={onSearch}
                     />
-                    <Table
-                        // rowKey={(record) => record.price_sort}
-                        pagination={false}
-                        columns={columns}
-                        dataSource={tableSetting}
-                    />
+                    <Table pagination={false} columns={columns} dataSource={tableSetting} />
                     <Modal
                         title="코잉쿠 차트"
                         visible={isModalVisible}

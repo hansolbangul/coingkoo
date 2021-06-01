@@ -7,9 +7,9 @@ import iconHome from '../../../img/home.png';
 import { AliwangwangOutlined, QqOutlined } from '@ant-design/icons';
 
 function Header(props) {
-    useEffect(() => {
-        axios.get('/api/hello').then((response) => console.log(response.data));
-    }, []);
+    // useEffect(() => {
+    //     axios.get('/api/hello').then((response) => console.log(response.data));
+    // }, []);
 
     const onClickHandler = () => {
         axios.get('/api/users/logout').then((response) => {
@@ -36,22 +36,25 @@ function Header(props) {
                         <h2>cOingkoo</h2>
                     </Link>
                 </div>
-                <div className="Menu">
-                    <Link to="/community">커뮤니티</Link>
-                    <Link to="/coinnews">기사</Link>
-                    <Link to="/coinsite">코인사이트</Link>
-                    <Link to="/marketcapitalization">시가총액</Link>
-                    <Link to="/info">소개</Link>
-                </div>
+                <ul className="Menu">
+                    <li>
+                        <Link to="/community">커뮤니티</Link>
+                    </li>
+                    <li>
+                        <Link to="/coinnews">기사</Link>
+                    </li>
+                    <li>
+                        <Link to="/coinsite">코인사이트</Link>
+                    </li>
+                    <li>
+                        <Link to="/info">소개</Link>
+                    </li>
+                </ul>
                 <div className="Log">
                     <Link to="/login">로그인</Link>
                     <Link onClick={onClickHandler}>로그아웃</Link>
                 </div>
             </div>
-            {/* <div className="body">
-                <QqOutlined style={{ fontSize: '4rem' }} />
-                <span style={{ fontSize: '2rem' }}>hello hansol homepage default</span>
-            </div> */}
         </div>
     );
 }
@@ -64,16 +67,16 @@ export default withRouter(Header);
 //     </header>
 // );
 
-const headerStyle = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    width: '100%',
-    // backgroundColor: '#3f72af',
-    marginBottom: 20,
-    zIndex: 100,
-    textAlign: 'center',
-};
+// const headerStyle = {
+//     position: 'fixed',
+//     top: 0,
+//     left: 0,
+//     right: 0,
+//     width: '100%',
+//     // backgroundColor: '#3f72af',
+//     marginBottom: 20,
+//     zIndex: 100,
+//     textAlign: 'center',
+// };
 
 // export default Header;
