@@ -35,9 +35,6 @@ const CoinPrice = (status, name) => {
         FillterNull(nullPrice);
     }, [nullPrice]);
 
-    // console.log(price);
-    // console.log(nullPrice);
-
     return price;
 };
 

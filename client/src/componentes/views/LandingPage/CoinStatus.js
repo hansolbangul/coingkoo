@@ -19,7 +19,7 @@ function CoinStatus(props) {
 
             // console.log(data);
         } catch {
-            console.log('err');
+            // console.log('err');
         } finally {
             // console.log('final');
         }

@@ -79,6 +79,9 @@ const TableSetting = (price) => {
                             chage_price_sort: item.signed_change_rate * 100,
                             acc_trade_price_24h_sort: item.acc_trade_price_24h,
                             hight: item.highest_52_week_price,
+                            modal: item.korean_name,
+                            english_name: item.english_name,
+                            info_name: item.english_name + ' : ' + item.market,
                         },
                     ],
                     []
