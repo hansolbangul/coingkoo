@@ -12,7 +12,7 @@ import MarketCapitalization from './views/MarketCapitalization/MarketCapitalizat
 import Info from './views/Info/Info.js';
 import CoinSite from './views/CoinSite/CoinSite';
 // import News from './views/CoinNews/CoinNews';
-import News from './views/Community/News';
+import WritePost from './views/Community/WritePost';
 import Post from './views/Community/Post';
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
                     <Route exact path="/coinsite" component={CoinSite} />
                     <Route exact path="/marketcapitalization" component={MarketCapitalization} />
                     <Route exact path="/info" component={Info} />
-                    <Route exact path="/community/news" component={News} />
+                    <Route exact path="/community/writepost" component={WritePost} />
                     <Route exact path="/community/:id" component={Post} />
                     {/* <Route exact path="/Community" component={Community} /> */}
                 </Switch>

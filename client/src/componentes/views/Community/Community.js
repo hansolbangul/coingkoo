@@ -88,7 +88,7 @@ function Community(props) {
                             <h1 style={{ marginLeft: '10px' }}>커뮤니티</h1>
                             <div style={{ margin: '10px' }}>
                                 <Link
-                                    to="/community/news"
+                                    to="/community/writepost"
                                     style={{ color: 'black', marginLeft: '10px' }}
                                 >
                                     <button>글쓰기</button>
