@@ -66,7 +66,8 @@ state는 리덕스를 통해 관리하도록 구성하였다. api는 업비트(u
 현재는 한눈에 직관적으로 볼 수 있게만 해두었다.
 
 # CoinNews Page
-![initial](https://user-images.githubusercontent.com/55542095/120500241-ab1dda00-c3fb-11eb-8d0b-1b48b7873933.png)
+![initial](https://user-images.githubusercontent.com/55542095/120501254-6fcfdb00-c3fc-11eb-900c-a3448c396f5b.png)
+
 
 코인관련 기사를 볼 수 있는 공간이다. 
 
