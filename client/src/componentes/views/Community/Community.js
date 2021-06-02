@@ -16,7 +16,7 @@ function Community(props) {
         setTemp(data);
         setClone(data);
     };
-    // console.log(clone);
+    console.log(clone);
 
     const onChange = (e) => {
         console.log('Change:', e.target.value);
@@ -60,6 +60,15 @@ function Community(props) {
             dataIndex: 'content',
             key: 'content',
             ellipsis: true,
+            render: (text, record, index) => {
+                return (
+                    <>
+                        <Link to={`/community/${record.id}`} style={{ color: 'black' }}>
+                            {text}
+                        </Link>
+                    </>
+                );
+            },
         },
         {
             title: 'date',

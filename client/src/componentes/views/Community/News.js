@@ -44,22 +44,19 @@ const News = (props) => {
         <Form
             onFinish={onFinish}
             style={{
-                width: '80%',
                 textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
                 alignItems: 'center',
+                // width: '100%',
+                height: '100vh',
                 margin: 'auto',
-                marginTop: '10px',
+                alignItems: 'center',
+                width: '80%',
             }}
         >
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    textAlign: 'center',
-                    width: '100%',
-                    justifyContent: 'space-between',
-                }}
-            >
+            <div>
                 <p style={{ marginRight: '5px' }}>제목: </p>
                 <Form.Item
                     name="title"
@@ -72,11 +69,6 @@ const News = (props) => {
                 >
                     <input />
                 </Form.Item>
-                <Form.Item>
-                    <Button type="primary" htmlType="submit">
-                        게시
-                    </Button>
-                </Form.Item>
             </div>
 
             <Form.Item
@@ -88,7 +80,12 @@ const News = (props) => {
                     },
                 ]}
             >
-                <TextArea showCount maxLength={100} />
+                <TextArea showCount maxLength={200} />
+            </Form.Item>
+            <Form.Item>
+                <Button type="primary" htmlType="submit">
+                    게시
+                </Button>
             </Form.Item>
         </Form>
     );

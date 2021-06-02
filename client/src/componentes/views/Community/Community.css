@@ -27,3 +27,15 @@
         font-size: 1px;
     }
 }
+
+.post_table {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-left: 5px;
+}
+
+.post_content {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
