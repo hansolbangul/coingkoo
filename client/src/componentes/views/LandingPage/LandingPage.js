@@ -23,9 +23,8 @@ function LandingPage(props) {
     const [modalInfo, setModalInfo] = useState('');
 
     const showModal = (e) => {
-        const [coinEngName, coinMarket] = e.target.innerText.split(' : ');
-        setModalChart(coinMarket);
-        const values = coinEngName.toLowerCase().replace(' ', '-');
+        setModalChart(e.market);
+        const values = e.english_name.toLowerCase().replace(' ', '-');
         const tmp = axios
             .get(
                 `https://api.coingecko.com/api/v3/coins/${values}?tickers=true&market_data=true&community_data=true`
@@ -136,9 +135,20 @@ function LandingPage(props) {
                     <>
                         {/* <div>{text}</div> */}
                         <span>
-                            <Button type="primary" onClick={showModal}>
-                                {text}
-                            </Button>
+                            <a
+                                style={{
+                                    color: 'black',
+                                    display: 'flex',
+                                    textOverflow: 'ellipsis',
+                                    overflow: 'hidden',
+                                    whiteSpace: 'nowrap',
+                                    wordBreak: 'keep-all',
+                                }}
+                                type="primary"
+                                onClick={() => showModal(record)}
+                            >
+                                차트&설명 보기
+                            </a>
                         </span>
                     </>
                 );
@@ -150,7 +160,7 @@ function LandingPage(props) {
         <div style={{ alignItems: 'center', textAlign: 'center' }}>
             {tableSetting && (
                 <div style={{ width: '80%', margin: 'auto' }}>
-                    <h2>coin</h2>
+                    <br />
                     <Search
                         size="large"
                         onChange={onSearch}
