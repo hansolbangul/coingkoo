@@ -1,5 +1,5 @@
 # coingkoo
-![initial]
+![initial](https://user-images.githubusercontent.com/71314689/120471704-004bf280-c3e0-11eb-9326-9977fd1ba82a.png)
 코잉쿠(cOingkoo) 프로젝트는 front-end 개발자(hansolbangul)와 back-end 개발자(JeonBeomGu-S)가 협력하여 만든 프로젝트이다.
 
 개인 포트폴리오 향상과, react.js 와 node.js간의 상호작용 이해 등을 직관적이게 확인하기 위함이다.
