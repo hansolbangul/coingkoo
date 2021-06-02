@@ -1,59 +1,59 @@
 .news-container {
-    height: 100%;
-    display: flex;
+  height: 100%;
+  display: flex;
 }
 
 .coin-news-datas .coin-news {
-    background-color: white;
-    margin-bottom: 70px;
-    font-weight: 300;
-    padding: 20px;
-    border-radius: 5px;
-    color: #adaeb9;
+  background-color: white;
+  margin-bottom: 70px;
+  font-weight: 300;
+  padding: 20px;
+  border-radius: 5px;
+  color: #adaeb9;
 
-    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3),
-        0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3),
+      0 -6px 16px -6px rgba(0, 0, 0, 0.025);
 }
 
 .coin-news-datas {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-gap: 80px;
-    width: 80%;
-    margin: auto;
-    padding-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 80px;
+  width: 80%;
+  margin: auto;
+  padding-top: 70px;
 }
 
 .news__image {
-    float: left;
-    margin-right: 50px;
+  float: left;
+  margin-right: 50px;
 }
 
 .coin-news-datas .coin-news a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 .coin-news img {
-    position: relative;
-    max-width: 150px;
-    width: auto;
-    box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3),
-        0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+  position: relative;
+  max-width: 150px;
+  width: auto;
+  box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3),
+      0 -12px 36px -8px rgba(0, 0, 0, 0.025);
 }
 
 .coin-news .coin-news__title,
 .coin-news .coin-news__year {
-    margin: 0;
-    font-weight: 300;
+  margin: 0;
+  font-weight: 300;
 }
 
 .coin-news .coin-news__title {
-    font-size: 24px;
-    color: #2c2c2c;
+  font-size: 24px;
+  color: #2c2c2c;
 }
 
 .coin-news .coin-news__year {
-    margin-right: 10px;
-    font-size: 14px;
+  margin-right: 10px;
+  font-size: 14px;
 }

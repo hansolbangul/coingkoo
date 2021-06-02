@@ -7,7 +7,7 @@ function CoinNewsPage(props) {
     const [NewsDatas, setNewsDatas] = useState([]);
 
     useEffect(() => {
-        axios.get('/api/crawling/news').then(response => {
+        axios.get('/api/crawling/news').then((response) => {
             setNewsDatas(response.data);
         });
     }, []);
@@ -15,7 +15,7 @@ function CoinNewsPage(props) {
     return (
         <section className="news-container">
             <div className="coin-news-datas">
-                {NewsDatas.map(news => (
+                {NewsDatas.map((news) => (
                     <CoinNews
                         key={news.url}
                         url={'https://kr.investing.com/' + news.url}
