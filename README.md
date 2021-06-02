@@ -66,8 +66,15 @@ state는 리덕스를 통해 관리하도록 구성하였다. api는 업비트(u
 현재는 한눈에 직관적으로 볼 수 있게만 해두었다.
 
 # CoinNews Page
-![initial]
+![initial](https://user-images.githubusercontent.com/55542095/120500241-ab1dda00-c3fb-11eb-8d0b-1b48b7873933.png)
+
 코인관련 기사를 볼 수 있는 공간이다. 
+
+코인 관련 기사는 "https://kr.investing.com/news/cryptocurrency-news" 에서 cheerio 라이브러리를 이용하여 크롤링하여 가져온다.
+
+가져오는 정보는 기사 제목과 이미지, 요약, 작성일, url 을 가져온다.
+
+url을 가져옴으로 실제 기사 페이지로 이동할 수 있도록 하였다.
 
 코인 관련 기사는 (사이트 예시 www.google.com 처럼 작성 요망)
 
