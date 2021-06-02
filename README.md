@@ -56,7 +56,7 @@ state는 리덕스를 통해 관리하도록 구성하였다. api는 업비트(u
 
 제목과 작성자 기준으로 검색이 가능한 페이지이다.
 
-# News Page
+# WritePost Page
 
 ![initial](https://user-images.githubusercontent.com/71314689/120471540-cb3fa000-c3df-11eb-9613-a487ad862cf1.png)
 코인 투자자들과 소통할 수 있는 커뮤니티의 글을 작성하는 공간이다.
