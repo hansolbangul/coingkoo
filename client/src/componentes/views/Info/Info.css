@@ -14,3 +14,22 @@ p {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+.dev_info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+a {
+    color: black;
+}
+
+.insta {
+    display: flex;
+    flex-direction: row;
+}
+/* 
+.info p {
+    line
+} */
