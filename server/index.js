@@ -226,7 +226,7 @@ app.post('/api/board/delete', (req, res) => {
 
 const getHtml = async () => {
     try {
-        return await axios.get('https://www.yna.co.kr/economy/finance?site=navi_economy_depth02');
+        return await axios.get('https://kr.investing.com/news/cryptocurrency-news');
     } catch (error) {
         console.error(error);
     }
@@ -237,15 +237,15 @@ app.get('/api/crawling/news', (req, res) => {
         .then(html => {
             let ulList = [];
             const $ = cheerio.load(html.data);
-            const $bodyList = $('div.list-type038 ul').children('li');
+            const $bodyList = $('div.largeTitle').children('article');
 
             $bodyList.each(function (i, elem) {
                 ulList[i] = {
-                    image: $(this).find('figure.img-con a img').attr('src'),
-                    title: $(this).find('div.news-con a strong.tit-news').text(),
-                    url: $(this).find('div.news-con a').attr('href'),
-                    summary: $(this).find('div.news-con p.lead').text().slice(0, 200),
-                    date: $(this).find('div.info-box01 span.txt-time').text(),
+                    image: $(this).find('a img').attr('data-src'),
+                    title: $(this).find('div.textDiv a').text(),
+                    url: $(this).find('a').attr('href'),
+                    summary: $(this).find('div.textDiv p').text(),
+                    date: $(this).find('span.articleDetails span.date').text(),
                 };
             });
 
