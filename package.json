@@ -14,11 +14,16 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.9",
     "concurrently": "^6.1.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.8"
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "mongoose": "^5.12.8",
+    "mongoose-auto-increment": "^5.0.1",
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
