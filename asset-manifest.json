@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/coingkoo/static/css/main.366c7e78.chunk.css",
+    "main.js": "/coingkoo/static/js/main.50b585ce.chunk.js",
+    "main.js.map": "/coingkoo/static/js/main.50b585ce.chunk.js.map",
+    "runtime-main.js": "/coingkoo/static/js/runtime-main.a3c652fc.js",
+    "runtime-main.js.map": "/coingkoo/static/js/runtime-main.a3c652fc.js.map",
+    "static/css/2.e4d41df7.chunk.css": "/coingkoo/static/css/2.e4d41df7.chunk.css",
+    "static/js/2.5742ca65.chunk.js": "/coingkoo/static/js/2.5742ca65.chunk.js",
+    "static/js/2.5742ca65.chunk.js.map": "/coingkoo/static/js/2.5742ca65.chunk.js.map",
+    "static/js/3.98161d2e.chunk.js": "/coingkoo/static/js/3.98161d2e.chunk.js",
+    "static/js/3.98161d2e.chunk.js.map": "/coingkoo/static/js/3.98161d2e.chunk.js.map",
+    "index.html": "/coingkoo/index.html",
+    "static/css/2.e4d41df7.chunk.css.map": "/coingkoo/static/css/2.e4d41df7.chunk.css.map",
+    "static/css/main.366c7e78.chunk.css.map": "/coingkoo/static/css/main.366c7e78.chunk.css.map",
+    "static/js/2.5742ca65.chunk.js.LICENSE.txt": "/coingkoo/static/js/2.5742ca65.chunk.js.LICENSE.txt",
+    "static/media/다운로드.d8ee1a27.png": "/coingkoo/static/media/다운로드.d8ee1a27.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a3c652fc.js",
+    "static/css/2.e4d41df7.chunk.css",
+    "static/js/2.5742ca65.chunk.js",
+    "static/css/main.366c7e78.chunk.css",
+    "static/js/main.50b585ce.chunk.js"
+  ]
+}
